@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context and Question Answering</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        .centered {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered">
+        <h1>Context and Question Answering</h1>
+        <!-- Context Input Form -->
+        {% if not context %}
+        <form method="POST">
+            <textarea name="contextInput" rows="4" placeholder="Enter context (in Tamil or English)"></textarea><br>
+            <label for="languageToken">Select Language:</label>
+            <select name="languageToken">
+                <option value="0">English</option>
+                <option value="1">Tamil</option>
+            </select><br>
+            <button type="submit">Submit Context</button>
+        </form>
+        {% endif %}
+
+        <!-- Question Input Form -->
+        {% if context and not question %}
+        <form method="POST">
+            <input type="hidden" name="context" value="{{ context }}">
+            <input type="hidden" name="language_token" value="{{ language_token }}">
+            <input type="text" name="questionInput" placeholder="Enter your question (in English)"><br>
+            <button type="submit">Submit Question</button>
+        </form>
+        {% endif %}
+
+        <!-- Display Answer -->
+        {% if answer %}
+        <h2>Answer:</h2>
+        <p>{{ answer }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
