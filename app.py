@@ -11,13 +11,13 @@ def index():
 def result():
     content = request.form['content'] 
     translated_text = translate(content) 
-    return render_template('main.html', content=content, translated_text=translated_text)
+    return render_template('home.html', content=content, translated_text=translated_text)
 
 @app.route('/answer', methods=['POST'])
 def answer():
     question = request.form['question']  
     answer_text = model(question)  
-    return render_template('main.html', content=request.form['content'], translated_text=request.form['translated_text'], answer=answer_text)
+    return render_template('home.html', content=request.form['content'], translated_text=request.form['translated_text'], answer=answer_text)
 
 if __name__ == '__main__':
     app.run(debug=True)
