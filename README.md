@@ -1,8 +1,5 @@
 # Context based Question Answering System with use of Transformer model
 
-Overview:
-The Multilingual QA System is a Flask-based web app that allows users to ask questions in multiple languages and receive accurate answers. It leverages pretrained transformer models for efficient question answering.
-
 Features:
 Supports multiple languages for context and questions.
 Uses BERT-based models for accurate answer extraction.
